@@ -21,10 +21,19 @@ export default function Sidebar() {
 
   return (
     <>
-            {/* Mobile top bar */}
+      {/* Mobile top bar */}
       <div
-        className="md:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3"
-        style={{ background: "var(--color-sidebar-bg)" }}
+        className="md:hidden flex items-center justify-between px-4 py-3"
+        style={{
+          background: "var(--color-sidebar-bg)",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          WebkitTransform: "translateZ(0)",
+          transform: "translateZ(0)",
+        }}
       >
         <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="Logo" width={28} height={28} className="rounded-md" />
@@ -32,27 +41,31 @@ export default function Sidebar() {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="text-white p-1"
+          className="text-white p-2 -mr-2"
           aria-label="Open menu"
         >
-          <Menu size={24} />
+          <Menu size={26} />
         </button>
       </div>
+
+      {/* Spacer to push content below fixed bar */}
+      <div className="md:hidden" style={{ height: 56 }} />
 
       {/* Overlay */}
       {open && (
         <div
-          className="md:hidden fixed inset-0 bg-black/40 z-40"
+          className="md:hidden fixed inset-0 bg-black/40"
+          style={{ zIndex: 90 }}
           onClick={() => setOpen(false)}
         />
       )}
 
       {/* Sidebar (drawer on mobile, static on desktop) */}
       <aside
-        className={`fixed md:sticky top-0 left-0 h-screen w-64 shrink-0 flex flex-col z-50 transition-transform duration-200 ${
+        className={`fixed md:sticky top-0 left-0 h-screen w-72 md:w-64 shrink-0 flex flex-col transition-transform duration-200 ${
           open ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
-        style={{ background: "var(--color-sidebar-bg)" }}
+        style={{ background: "var(--color-sidebar-bg)", zIndex: 110 }}
       >
         <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -74,14 +87,14 @@ export default function Sidebar() {
           </div>
           <button
             onClick={() => setOpen(false)}
-            className="md:hidden text-white p-1"
+            className="md:hidden text-white p-2"
             aria-label="Close menu"
           >
-            <X size={20} />
+            <X size={22} />
           </button>
         </div>
 
-        <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
           {items.map(({ href, label, icon: Icon }) => {
             const active = pathname === href;
             return (
@@ -89,13 +102,13 @@ export default function Sidebar() {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                className={`flex items-center gap-3 px-4 py-3.5 rounded-lg text-sm transition-colors ${
                   active
                     ? "bg-[var(--color-primary)] text-white font-medium"
                     : "text-[var(--color-sidebar-text)] opacity-80 hover:opacity-100 hover:bg-white/5"
                 }`}
               >
-                <Icon size={18} strokeWidth={active ? 2.5 : 2} />
+                <Icon size={20} strokeWidth={active ? 2.5 : 2} />
                 {label}
               </Link>
             );
