@@ -21,9 +21,9 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile top bar */}
+            {/* Mobile top bar */}
       <div
-        className="md:hidden sticky top-0 z-40 flex items-center justify-between px-4 py-3"
+        className="md:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3"
         style={{ background: "var(--color-sidebar-bg)" }}
       >
         <div className="flex items-center gap-2">
