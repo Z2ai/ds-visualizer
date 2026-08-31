@@ -121,7 +121,7 @@ export default function ArrayPage() {
           {error && <p className="text-sm text-[var(--color-danger)]">{error}</p>}
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-5">
             <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 border-t-4 border-t-[var(--color-primary)] space-y-3">
               <ArrayVisualizer array={array} />
@@ -134,7 +134,7 @@ export default function ArrayPage() {
             </div>
 
             <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 space-y-3">
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="number"
                   placeholder="Value"

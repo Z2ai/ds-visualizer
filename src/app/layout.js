@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="flex min-h-screen">
+        <div className="md:flex min-h-screen">
           <Sidebar />
           <main className="flex-1 bg-[var(--color-bg)] min-h-screen">
             {children}

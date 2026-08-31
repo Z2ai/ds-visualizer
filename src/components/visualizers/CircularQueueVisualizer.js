@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function CircularQueueVisualizer({ slots, front, rear }) {
   const size = slots.length;
-  const radius = 90;
-  const center = 120;
+    const radius = 75;
+  const center = 100;
 
   return (
-    <div className="relative" style={{ width: 240, height: 240 }}>
+        <div className="relative mx-auto" style={{ width: 200, height: 200, maxWidth: "100%" }}>
       {slots.map((slot, index) => {
         const angle = (index / size) * 2 * Math.PI - Math.PI / 2;
         const x = center + radius * Math.cos(angle) - 24;

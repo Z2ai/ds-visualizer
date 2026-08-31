@@ -8,7 +8,7 @@ export default function CodePanel({ title, code }) {
           {title || "C++ Code"}
         </span>
       </div>
-      <pre className="p-4 text-sm overflow-x-auto text-[var(--color-text)] leading-relaxed">
+      <pre className="p-4 text-xs sm:text-sm overflow-x-auto text-[var(--color-text)] leading-relaxed">
         <code>{code}</code>
       </pre>
     </div>
