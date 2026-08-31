@@ -130,7 +130,7 @@ export default function QueuePage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-5">
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 border-t-4 border-t-[var(--color-primary)] flex flex-col items-center gap-4 overflow-x-auto">
+            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 border-t-4 border-t-[var(--color-primary)] flex flex-col items-stretch gap-4 overflow-x-auto">
               <QueueVisualizer slots={slots} front={front} rear={rear} />
               <button
                 onClick={handleReset}

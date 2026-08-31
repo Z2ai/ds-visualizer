@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function QueueVisualizer({ slots, front, rear }) {
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-2 w-full">
+      <div className="flex gap-2 border-2 border-[var(--color-border)] rounded-lg p-3 min-h-[80px] items-center bg-[var(--color-bg)] overflow-x-auto">
         {slots.map((slot, index) => (
-          <div key={index} className="flex flex-col items-center gap-1">
+          <div key={index} className="flex flex-col items-center gap-1 shrink-0">
             <div className="h-5 text-[10px] font-medium text-[var(--color-primary-dark)]">
               {index === front && index === rear && "Front/Rear"}
               {index === front && index !== rear && "Front"}
@@ -35,6 +35,9 @@ export default function QueueVisualizer({ slots, front, rear }) {
           </div>
         ))}
       </div>
+      <p className="text-xs text-[var(--color-text-muted)] self-center">
+        {slots.filter((s) => s !== null).length} / {slots.length}
+      </p>
     </div>
   );
 }
